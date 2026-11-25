@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Morpion</title>
+  <meta name="theme-color" content="#1f2328">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Morpion">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icon-192.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <h1>Morpion</h1>
+
+    <div class="modes" role="radiogroup" aria-label="Mode de jeu">
+      <button class="mode active" data-mode="ai" role="radio" aria-checked="true">Contre l'ordinateur</button>
+      <button class="mode" data-mode="pvp" role="radio" aria-checked="false">2 joueurs</button>
+    </div>
+
+    <div class="difficulty" id="difficulty">
+      <label for="level">Difficulté :</label>
+      <select id="level">
+        <option value="easy">Facile</option>
+        <option value="medium">Moyen</option>
+        <option value="hard" selected>Imbattable</option>
+      </select>
+    </div>
+
+    <p class="status" id="status" aria-live="polite">Au tour de X</p>
+
+    <div class="board" id="board" role="grid" aria-label="Plateau de jeu"></div>
+
+    <div class="scores">
+      <div class="score x"><span class="label" id="labelX">Vous (X)</span><span id="scoreX">0</span></div>
+      <div class="score draw"><span class="label">Nuls</span><span id="scoreDraw">0</span></div>
+      <div class="score o"><span class="label" id="labelO">Ordi (O)</span><span id="scoreO">0</span></div>
+    </div>
+
+    <div class="actions">
+      <button id="restart">Nouvelle partie</button>
+      <button id="reset" class="secondary">Remettre les scores à zéro</button>
+    </div>
+  </main>
+  <script src="game.js"></script>
+  <script>
+    if ('serviceWorker' in navigator && location.protocol !== 'file:') {
+      navigator.serviceWorker.register('sw.js');
+    }
+  </script>
+</body>
+</html>
